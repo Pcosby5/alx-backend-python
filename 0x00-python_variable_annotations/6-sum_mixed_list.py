@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+""" Computes the sum of a list of integers and floats.
+"""
 
 from typing import List, Union
 

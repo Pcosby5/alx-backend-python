@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+""" Computes the length of each element in a list.
+"""
 
 from typing import Iterable, Sequence, List, Tuple
 

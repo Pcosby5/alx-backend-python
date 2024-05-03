@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+""" Returns a tuple with the string k as the first element and
+    the square of the int/float v as the second element.
+"""
 
 from typing import Union, Tuple
 
