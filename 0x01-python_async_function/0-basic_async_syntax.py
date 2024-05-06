@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Wait for a random time between 0 and delay_max seconds.
+"""
 
 import random
 import asyncio
