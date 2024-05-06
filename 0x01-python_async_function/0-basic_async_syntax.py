@@ -1,21 +1,31 @@
 #!/usr/bin/env python3
-"""Wait for a random times between 0 and delay_max seconds.
-"""
+'''
+    The basics of async.
+'''
 
-import random
 import asyncio
+import random
 
 
-async def wait_random(delay_max: int = 10) -> float:
-    """Wait for a random time between 0 and delay_max seconds.
+
+
+async def wait_random(max_delay: int = 10) -> float:
+    """
+    Waits for a random time between 0 and max_delay (included and float value)
+    seconds and eventually returns it.
 
     Args:
-        delay_max (float): The maximum delay in seconds.
+        max_delay (int): The maximum delay in seconds.
             Defaults to 10 seconds.
 
     Returns:
         float: The actual delay in seconds.
     """
-    delay: float = random.uniform(0, delay_max)
+    # Generate a random delay between 0 and max_delay
+    delay: float = random.uniform(0, max_delay)
+
+    # Suspend the execution of the current task for the generated delay
     await asyncio.sleep(delay)
+
+    # Return the generated delay
     return delay
