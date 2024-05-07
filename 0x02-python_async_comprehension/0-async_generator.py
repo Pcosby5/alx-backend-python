@@ -9,7 +9,7 @@ import random
 from typing import AsyncGenerator
 
 
-async def async_generator() -> "AsyncGenerator[float, None]":
+async def async_generator() -> AsyncGenerator[float, None]:
     """
     An async generator that generates 10 random numbers between 0 and 10,
     one per second.
