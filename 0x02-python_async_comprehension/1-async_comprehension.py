@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+    Collects 10 random numbers from the
+    async_generator() using async comprehension.
+"""
 
 from typing import List
 from random import uniform

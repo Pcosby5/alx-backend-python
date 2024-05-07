@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""Measures the total runtime of executing
+    async_comprehension four times in parallel.
+"""
 
 import asyncio
 from typing import List
