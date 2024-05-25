@@ -1,5 +1,5 @@
 # client.py
-from typing import List, Dict, Callable, Any
+from typing import List, Dict, Any
 
 import requests
 from utils import get_json, access_nested_map, memoize
@@ -27,7 +27,13 @@ class GithubOrgClient:
     @memoize
     def repos_payload(self) -> List[Dict[str, Any]]:
         """Memoize repos payload"""
-        return get_json(self._public_repos_url)
+        json_payload = get_json(self._public_repos_url)
+        if isinstance(json_payload, list):
+            return json_payload
+        elif isinstance(json_payload, dict):
+            return [json_payload]
+        else:
+            raise ValueError("Unexpected payload format from API")
 
     def public_repos(self, license: str = "") -> List[str]:
         """Public repos"""
