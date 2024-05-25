@@ -23,12 +23,11 @@ class TestGithubOrgClient(unittest.TestCase):
         Test that GithubOrgClient.has_license returns the correct value.
         """
         with patch('client.access_nested_map') as mock_access_nested_map:
-            mock_access_nested_map.return_value = repo
+            mock_access_nested_map.return_value = repo.get('license', {})
 
             result = GithubOrgClient.has_license(repo, license_key)
 
             self.assertEqual(result, expected_has_license)
-
             mock_access_nested_map.assert_called_once_with(repo,
                                                            ("license", "key"))
 
