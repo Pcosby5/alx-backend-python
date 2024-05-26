@@ -45,12 +45,26 @@ class GithubOrgClient:
 
         return public_repos
 
+    # @staticmethod
+    # def has_license(repo: Dict[str, Dict[str, Any]], license_key: str) -> bool:
+    #     """Static: has_license"""
+    #     assert license_key is not None, "license_key cannot be None"
+    #     try:
+    #         has_license = access_nested_map(repo, ("license", "key")) == license_key
+    #     except KeyError:
+    #         return False
+    #     return has_license
+
+
     @staticmethod
-    def has_license(repo: Dict[str, Dict[str, Any]], license_key: str) -> bool:
+    def has_license(repo: Dict[str, Dict], license_key: str) -> bool:
         """Static: has_license"""
         assert license_key is not None, "license_key cannot be None"
         try:
-            has_license = access_nested_map(repo, ("license", "key")) == license_key
-        except KeyError:
+            license_value = access_nested_map(repo, ("license", "key"))
+            print(f"Inside has_license: repo={repo}, license_key={license_key}, license_value={license_value}")
+            has_license = license_value == license_key
+        except KeyError as e:
+            print(f"Inside has_license: repo={repo}, license_key={license_key}, raised KeyError={e}")
             return False
         return has_license
